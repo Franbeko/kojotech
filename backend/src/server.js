@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import compression from 'compression';
 
+import { warmUpBolt } from './services/bolt.warmup.js';
 import { env } from './config/env.js';
 import { connectDB } from './config/db.js';
 import { logger } from './utils/logger.js';
@@ -59,6 +60,11 @@ app.use(errorHandler);
 /* --------------------------- Bootstrap ---------------------------- */
 async function start() {
   await connectDB();
+
+  // Warm up the AI provider connection in the background.
+  // Does NOT block the HTTP server — fire and forget.
+  warmUpBolt().catch(() => {});
+
   app.listen(env.PORT, () => {
     logger.info(`KojoTech API listening on http://localhost:${env.PORT}`);
     logger.info(`CORS origin: ${env.CLIENT_URL}`);

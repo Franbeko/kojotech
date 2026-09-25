@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import BoltLauncher from '../components/bolt/BoltLauncher';
 
 export default function RootLayout() {
   return (
@@ -19,6 +20,9 @@ export default function RootLayout() {
         </main>
         <Footer />
       </div>
+
+      {/* Bolt — floating AI assistant, present on every page */}
+      <BoltLauncher />
     </div>
   );
 }
