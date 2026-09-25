@@ -11,7 +11,7 @@ export const site = {
     'KojoTech builds modern websites, web applications, business management systems, and custom digital solutions for businesses, startups, and organizations.',
 
   contact: {
-    email: 'kojotechsolutions@gmail.com',
+    email: 'hello.kojotech@gmail.com',
     whatsappNumber: env.WHATSAPP_NUMBER,
     whatsappDisplay: '+231 776 00 5247',
   },

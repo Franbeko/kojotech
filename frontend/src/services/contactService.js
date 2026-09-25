@@ -1,24 +1,16 @@
+import { api, normalizeApiError } from './api';
+
 /**
  * Submit a contact inquiry.
  *
- * PHASE 8: stub — simulates latency so the UI can be tested end-to-end.
- * PHASE 9: swap the body for the real `api.post('/api/contact', payload)` call.
+ * Phase 9: real API call. The backend validates, logs, and (Phase 10+)
+ * persists to MongoDB and sends Formspree notifications.
  */
 export async function submitContactForm(payload) {
-  await new Promise((resolve) => setTimeout(resolve, 900));
-
-  if (!payload.email || !payload.email.includes('@')) {
-    throw {
-      response: {
-        status: 400,
-        data: { message: 'Please provide a valid email address.' },
-      },
-    };
+  try {
+    const { data } = await api.post('/api/contact', payload);
+    return data;
+  } catch (error) {
+    throw normalizeApiError(error);
   }
-
-  return {
-    success: true,
-    id: `stub-${Date.now()}`,
-    message: 'Inquiry received (stub — real API wired in Phase 9).',
-  };
 }
