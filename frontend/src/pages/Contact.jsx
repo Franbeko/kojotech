@@ -1,29 +1,40 @@
 import Container from '../components/ui/Container';
 import SEOHead from '../components/shared/SEOHead';
-import SectionHeading from '../components/shared/SectionHeading';
-import WhatsAppCTA from '../components/shared/WhatsAppCTA';
-import { WhatsAppMessages } from '../utils/whatsapp';
+import ContactHero from '../sections/contact/ContactHero';
+import ContactForm from '../components/contact/ContactForm';
+import ContactInfo from '../sections/contact/ContactInfo';
+import ContactProcess from '../sections/contact/ContactProcess';
 
 export default function Contact() {
   return (
     <>
       <SEOHead
         title="Start a Project"
-        description="Tell KojoTech about your project and get a response within 24–48 hours."
+        description="Tell KojoTech about your project. Websites, web apps, business systems, e-commerce, and custom digital solutions. Response within 24–48 hours."
         path="/contact"
       />
-      <section className="section pt-32 sm:pt-40">
+
+      <ContactHero />
+
+      <section className="pb-16 md:pb-24">
         <Container>
-          <SectionHeading
-            eyebrow="Start a Project"
-            title="Tell us what you're building."
-            description="Contact form UI arrives in Phase 8. Backend wiring in Phases 9–11."
-          />
-          <div className="mt-8">
-            <WhatsAppCTA message={WhatsAppMessages.general} size="lg" />
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            {/* Form — main column */}
+            <div className="lg:col-span-8">
+              <div className="rounded-lg border border-ink-line bg-ink-soft/40 p-6 md:p-10">
+                <ContactForm />
+              </div>
+            </div>
+
+            {/* Sidebar */}
+            <div className="lg:col-span-4">
+              <ContactInfo />
+            </div>
           </div>
         </Container>
       </section>
+
+      <ContactProcess />
     </>
   );
 }
