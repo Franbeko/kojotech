@@ -12,7 +12,7 @@ export const projects = [
     type: 'Restaurant Website',
     status: 'Live',
     statusNote: 'Live and serving customers.',
-    image: '/public/projects/pzel-ghana-chop-bar.png',
+    image: '/projects/pzel-ghana-chop-bar.png',
     externalUrl: 'https://pzelghanachopbar.com/',
     problem:
       'The restaurant needed a professional online presence to showcase its menu, welcome new customers, and make it easy to order.',
@@ -34,7 +34,7 @@ export const projects = [
     type: 'Investment & Consultancy Website',
     status: 'Live',
     statusNote: 'Live and serving investors.',
-    image: '/public/projects/track2311-investments.png',
+    image: '/projects/track2311-investments.png',
     externalUrl: 'https://track2311investments.org/',
     problem:
       'An agricultural investment and consultancy firm needed a platform to present its services, company profile, and investor information to a global audience.',
@@ -57,7 +57,7 @@ export const projects = [
     type: 'Investment Platform',
     status: 'Live',
     statusNote: 'Live and serving investors.',
-    image: '/public/projects/livestocks-broker.png',
+    image: '/projects/livestocks-broker.png',
     externalUrl: 'https://livestocksbroker.com/',
     problem:
       'The client needed a professional investment platform to present packages and give potential investors confidence to engage.',

@@ -6,12 +6,12 @@ export default function ProjectCard({ project, className }) {
   const hasDetail = Boolean(project.slug);
   const hasExternal = Boolean(project.externalUrl);
 
-  // External projects open directly. Internal case studies route to /work/:slug.
-  const Wrapper = hasExternal ? 'a' : hasDetail ? Link : 'div';
-  const wrapperProps = hasExternal
-    ? { href: project.externalUrl, target: '_blank', rel: 'noopener noreferrer' }
-    : hasDetail
-      ? { to: `/work/${project.slug}` }
+  // Prefer the internal case study; fall back to external; fall back to div.
+  const Wrapper = hasDetail ? Link : hasExternal ? 'a' : 'div';
+  const wrapperProps = hasDetail
+    ? { to: `/work/${project.slug}` }
+    : hasExternal
+      ? { href: project.externalUrl, target: '_blank', rel: 'noopener noreferrer' }
       : {};
 
   return (
@@ -68,14 +68,19 @@ export default function ProjectCard({ project, className }) {
           </div>
         )}
 
-        {/* External link indicator on hover */}
-        {hasExternal && (
-          <div className="pointer-events-none absolute right-4 top-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <span className="flex items-center gap-1 rounded-sm border border-ink-line bg-ink/80 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-bone backdrop-blur-sm">
-              <ExternalLink size={10} aria-hidden="true" />
-              Visit
-            </span>
-          </div>
+        {/* External link pill (shown only if external and has internal detail) */}
+        {hasExternal && hasDetail && (
+          <a
+            href={project.externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="absolute right-4 top-4 flex items-center gap-1 rounded-sm border border-ink-line bg-ink/80 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-bone opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 hover:text-lime"
+            aria-label={`Visit ${project.name} live site`}
+          >
+            <ExternalLink size={10} aria-hidden="true" />
+            Visit
+          </a>
         )}
       </div>
 
