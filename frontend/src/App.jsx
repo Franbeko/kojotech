@@ -6,6 +6,7 @@ import Work from './pages/Work';
 import CaseStudy from './pages/CaseStudy';
 import About from './pages/About';
 import FAQ from './pages/FAQ';
+import Testimonials from './pages/Testimonials';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="work/:slug" element={<CaseStudy />} />
         <Route path="about" element={<About />} />
         <Route path="faq" element={<FAQ />} />
+        <Route path="testimonials" element={<Testimonials />} />
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="*" element={<NotFound />} />

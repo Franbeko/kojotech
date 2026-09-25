@@ -3,12 +3,12 @@
  * Order matters — it renders in this sequence.
  */
 export const primaryNav = [
-  { label: 'Home',     to: '/' },
-  { label: 'Services', to: '/services' },
-  { label: 'Work',     to: '/work' },
-  { label: 'About',    to: '/about' },
-  { label: 'FAQ',      to: '/faq' },
-  { label: 'Contact',  to: '/contact' },
+  { label: "Home", to: "/" },
+  { label: "Services", to: "/services" },
+  { label: "Work", to: "/work" },
+  { label: "About", to: "/about" },
+  { label: "FAQ", to: "/faq" },
+  { label: "Contact", to: "/contact" },
 ];
 
 /**
@@ -16,18 +16,25 @@ export const primaryNav = [
  */
 export const footerNav = {
   company: [
-    { label: 'About',    to: '/about' },
-    { label: 'Work',     to: '/work' },
-    { label: 'Services', to: '/services' },
-    { label: 'FAQ',      to: '/faq' },
+    { label: "About", to: "/about" },
+    { label: "Work", to: "/work" },
+    { label: "Services", to: "/services" },
+    { label: "Testimonials", to: "/testimonials" },
+    { label: "FAQ", to: "/faq" },
   ],
   services: [
-    { label: 'Website Development',        to: '/services#website-development' },
-    { label: 'Web Applications',           to: '/services#web-applications' },
-    { label: 'Business Management Systems', to: '/services#business-management-systems' },
-    { label: 'E-Commerce Solutions',       to: '/services#e-commerce-solutions' },
-    { label: 'Custom Digital Solutions',   to: '/services#custom-digital-solutions' },
-    { label: 'Domain & Hosting',           to: '/services#domain-hosting' },
-    { label: 'Maintenance & Support',      to: '/services#maintenance-support' },
+    { label: "Website Development", to: "/services#website-development" },
+    { label: "Web Applications", to: "/services#web-applications" },
+    {
+      label: "Business Management Systems",
+      to: "/services#business-management-systems",
+    },
+    { label: "E-Commerce Solutions", to: "/services#e-commerce-solutions" },
+    {
+      label: "Custom Digital Solutions",
+      to: "/services#custom-digital-solutions",
+    },
+    { label: "Domain & Hosting", to: "/services#domain-hosting" },
+    { label: "Maintenance & Support", to: "/services#maintenance-support" },
   ],
 };
