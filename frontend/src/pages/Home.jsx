@@ -1,7 +1,16 @@
-import Container from '../components/ui/Container';
 import SEOHead from '../components/shared/SEOHead';
-import SectionHeading from '../components/shared/SectionHeading';
-import Marquee from '../components/shared/Marquee';
+import Hero from '../sections/home/Hero';
+import ServicesMarquee from '../sections/home/ServicesMarquee';
+import BrandIntro from '../sections/home/BrandIntro';
+import ServicesGrid from '../sections/home/ServicesGrid';
+import Industries from '../sections/home/Industries';
+import SelectedWork from '../sections/home/SelectedWork';
+import WhyKojoTech from '../sections/home/WhyKojoTech';
+import Process from '../sections/home/Process';
+import Founder from '../sections/home/Founder';
+import Testimonials from '../sections/home/Testimonials';
+import FAQPreview from '../sections/home/FAQPreview';
+import FinalCTA from '../sections/home/FinalCTA';
 
 export default function Home() {
   return (
@@ -12,42 +21,18 @@ export default function Home() {
         path="/"
       />
 
-      {/* Temporary Phase 3 placeholder */}
-      <section className="section pt-32 sm:pt-40">
-        <Container>
-          <p className="eyebrow mb-4">Building Digital Solutions</p>
-          <h1 className="text-display-xl text-balance text-bone max-w-4xl">
-            Modern digital work, built properly.
-          </h1>
-          <p className="mt-6 max-w-prose text-base leading-relaxed text-bone-dim">
-            Phase 3 placeholder. The real homepage sections arrive in Phase 4.
-          </p>
-        </Container>
-      </section>
-
-      <section className="border-y border-ink-line py-8">
-        <Marquee
-          items={[
-            { text: 'Websites' },
-            { text: 'Web Apps' },
-            { text: 'E-Commerce' },
-            { text: 'Business Systems' },
-            { text: 'Custom Solutions' },
-            { text: 'Domain & Hosting' },
-            { text: 'Maintenance' },
-          ]}
-        />
-      </section>
-
-      <section className="section">
-        <Container>
-          <SectionHeading
-            eyebrow="What's next"
-            title="Full homepage sections in Phase 4"
-            description="Hero, services grid, industries, selected work, why KojoTech, process, founder, testimonials, FAQ preview, and CTA will be built in Phase 4."
-          />
-        </Container>
-      </section>
+      <Hero />
+      <ServicesMarquee />
+      <BrandIntro />
+      <ServicesGrid />
+      <Industries />
+      <SelectedWork />
+      <WhyKojoTech />
+      <Process />
+      <Founder />
+      <Testimonials />
+      <FAQPreview />
+      <FinalCTA />
     </>
   );
 }
