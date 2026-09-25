@@ -4,24 +4,19 @@ import { logger } from '../utils/logger.js';
 /**
  * POST /api/contact
  *
- * Body (validated by contact.routes.js):
- *   name, email, phone?, company?, projectType, budget?, message, preferredContact, source?
- *
- * Phase 9: validates + logs. Mongo write lands in Phase 10.
+ * Body validated by contact.routes.js.
+ * Persists the inquiry to MongoDB and returns the saved record's ID.
  */
 export async function submitContact(req, res, next) {
   try {
     const inquiry = await createInquiry(req.body);
-
-    logger.info(
-      `New inquiry received — ${inquiry.email} (${inquiry.projectType})`
-    );
 
     res.status(201).json({
       success: true,
       message:
         'Inquiry received. KojoTech will reply within 24–48 hours.',
       id: inquiry.id,
+      createdAt: inquiry.createdAt,
     });
   } catch (error) {
     next(error);
