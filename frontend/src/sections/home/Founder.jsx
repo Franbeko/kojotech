@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import Container from '../../components/ui/Container';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
@@ -70,19 +71,32 @@ export default function Founder() {
               </p>
             </div>
 
-            <a
-              href={site.founder.portfolio}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-8 inline-flex items-center gap-2 text-sm text-lime transition-colors hover:text-lime-soft"
-            >
-              View Francis&apos;s personal portfolio
-              <ArrowUpRight
-                size={16}
-                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link
+                to="/about"
+                className="group inline-flex items-center gap-2 text-sm text-lime transition-colors hover:text-lime-soft"
+              >
+                More about KojoTech
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+              <a
+                href={site.founder.portfolio}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-sm text-bone-dim transition-colors hover:text-bone"
+              >
+                Francis&apos;s personal portfolio
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </Container>
