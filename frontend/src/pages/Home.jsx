@@ -1,3 +1,4 @@
+import { organizationSchema, websiteSchema } from '../config/site';
 import SEOHead from '../components/shared/SEOHead';
 import Hero from '../sections/home/Hero';
 import ServicesMarquee from '../sections/home/ServicesMarquee';
@@ -19,6 +20,7 @@ export default function Home() {
         title="Building Digital Solutions"
         description="KojoTech builds modern websites, web applications, business systems, and custom digital solutions for businesses, startups, and organizations."
         path="/"
+        jsonLd={[organizationSchema, websiteSchema]}
       />
 
       <Hero />

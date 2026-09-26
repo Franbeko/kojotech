@@ -42,3 +42,53 @@ export function buildWhatsAppURL(message) {
   const base = `https://wa.me/${number}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
+
+/**
+ * JSON-LD schemas for structured data (SEO).
+ */
+
+export const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'KojoTech',
+  alternateName: 'KojoTech Solutions',
+  url: site.url,
+  logo: `${site.url}/favicon.svg`,
+  description: site.description,
+  slogan: site.tagline,
+  email: site.contact.email,
+  founder: {
+    '@type': 'Person',
+    name: site.founder.name,
+    jobTitle: 'Founder / Full-Stack Developer',
+    url: site.founder.portfolio,
+  },
+  areaServed: ['Ghana', 'Worldwide'],
+  sameAs: [site.social.instagram, site.founder.portfolio],
+};
+
+export const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${site.url}/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+export const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.founder.name,
+  jobTitle: 'Founder / Full-Stack Developer',
+  description: site.founder.positioning,
+  url: site.founder.portfolio,
+  worksFor: {
+    '@type': 'Organization',
+    name: 'KojoTech',
+    url: site.url,
+  },
+};

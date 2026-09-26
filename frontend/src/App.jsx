@@ -1,31 +1,55 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
+
+// Home loads eagerly — it's the primary landing page and most visitors see it first.
 import Home from './pages/Home';
-import Services from './pages/Services';
-import Work from './pages/Work';
-import CaseStudy from './pages/CaseStudy';
-import About from './pages/About';
-import FAQ from './pages/FAQ';
-import Testimonials from './pages/Testimonials';
-import Contact from './pages/Contact';
-import Privacy from './pages/Privacy';
-import NotFound from './pages/NotFound';
+
+// All other pages load on demand (code-split).
+const Services = lazy(() => import('./pages/Services'));
+const Work = lazy(() => import('./pages/Work'));
+const CaseStudy = lazy(() => import('./pages/CaseStudy'));
+const About = lazy(() => import('./pages/About'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const Testimonials = lazy(() => import('./pages/Testimonials'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+/**
+ * RouteLoading — minimal fallback shown while a lazy page chunk loads.
+ * Kept intentionally tiny so it doesn't add weight to the entry bundle.
+ */
+function RouteLoading() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="flex items-center gap-2 text-bone-faint">
+        <span className="h-2 w-2 animate-pulse-soft rounded-full bg-lime" />
+        <span className="font-mono text-xs uppercase tracking-[0.18em]">
+          Loading
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<RootLayout />}>
-        <Route index element={<Home />} />
-        <Route path="services" element={<Services />} />
-        <Route path="work" element={<Work />} />
-        <Route path="work/:slug" element={<CaseStudy />} />
-        <Route path="about" element={<About />} />
-        <Route path="faq" element={<FAQ />} />
-        <Route path="testimonials" element={<Testimonials />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="privacy" element={<Privacy />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<RouteLoading />}>
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route index element={<Home />} />
+          <Route path="services" element={<Services />} />
+          <Route path="work" element={<Work />} />
+          <Route path="work/:slug" element={<CaseStudy />} />
+          <Route path="about" element={<About />} />
+          <Route path="faq" element={<FAQ />} />
+          <Route path="testimonials" element={<Testimonials />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="privacy" element={<Privacy />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }

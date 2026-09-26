@@ -3,7 +3,10 @@ import { site } from '../../config/site';
 
 /**
  * SEOHead — per-page metadata.
- * Usage: <SEOHead title="Services" description="..." path="/services" />
+ *
+ * Usage:
+ *   <SEOHead title="Services" description="..." path="/services" />
+ *   <SEOHead title="About" jsonLd={personSchema} />
  */
 export default function SEOHead({
   title,
@@ -11,6 +14,7 @@ export default function SEOHead({
   path = '/',
   image = '/og-image.png',
   noIndex = false,
+  jsonLd = null,
 }) {
   const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
   const url = `${site.url}${path}`;
@@ -30,12 +34,18 @@ export default function SEOHead({
       <meta property="og:url" content={url} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content={site.name} />
+      <meta property="og:locale" content="en_US" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+
+      {/* JSON-LD structured data */}
+      {jsonLd && (
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      )}
     </Helmet>
   );
 }

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block API routes and admin paths if they ever exist
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://kojotech.com/sitemap.xml

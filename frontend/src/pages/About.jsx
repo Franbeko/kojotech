@@ -1,3 +1,4 @@
+import { personSchema } from '../config/site';
 import SEOHead from '../components/shared/SEOHead';
 import AboutHero from '../sections/about/AboutHero';
 import BrandStory from '../sections/about/BrandStory';
@@ -14,6 +15,7 @@ export default function About() {
         title="About"
         description="KojoTech is a technology brand founded by Francis Kojo Haizel, building modern digital solutions for businesses, startups, and organizations — with honesty and craft."
         path="/about"
+        jsonLd={personSchema}
       />
 
       <AboutHero />
