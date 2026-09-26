@@ -2,11 +2,12 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import BoltLauncher from '../components/bolt/BoltLauncher';
+import WhatsAppFloating from '../components/shared/WhatsAppFloating';
 
 export default function RootLayout() {
   return (
     <div className="relative min-h-screen bg-ink text-bone">
-      {/* Blueprint dot grid overlay — KojoTech visual identity */}
+      {/* Blueprint dot grid overlay */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0 bg-grid-dot bg-dot-24 opacity-40"
@@ -21,7 +22,8 @@ export default function RootLayout() {
         <Footer />
       </div>
 
-      {/* Bolt — floating AI assistant, present on every page */}
+      {/* Floating elements — WhatsApp above Bolt */}
+      <WhatsAppFloating />
       <BoltLauncher />
     </div>
   );

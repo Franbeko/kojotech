@@ -13,7 +13,6 @@ export function useBolt() {
   const [messages, setMessages] = useState([WELCOME_MESSAGE]);
   const [suggestions, setSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasLoadedSuggestions, setHasLoadedSuggestions] = useState(false);
 
   // Session ID — bumped on reset. Late replies from an old session are ignored.
   const sessionRef = useRef(0);
@@ -22,10 +21,7 @@ export function useBolt() {
   useEffect(() => {
     let mounted = true;
     fetchBoltSuggestions().then((list) => {
-      if (mounted) {
-        setSuggestions(list);
-        setHasLoadedSuggestions(true);
-      }
+      if (mounted) setSuggestions(list);
     });
     return () => {
       mounted = false;
@@ -41,7 +37,6 @@ export function useBolt() {
       const content = String(rawMessage || '').trim().slice(0, 500);
       if (!content || isLoading) return;
 
-      // Capture the session this request belongs to
       const mySession = sessionRef.current;
 
       const userMessage = {
@@ -50,7 +45,6 @@ export function useBolt() {
         content,
       };
 
-      // Trim history aggressively for speed
       const historyForRequest = messages
         .filter((m) => m.id !== 'welcome')
         .slice(-6)
@@ -68,7 +62,6 @@ export function useBolt() {
           history: historyForRequest,
         });
 
-        // If reset was pressed while awaiting, this reply belongs to a dead session.
         if (mySession !== sessionRef.current) return;
 
         setMessages((prev) => [
@@ -81,7 +74,6 @@ export function useBolt() {
           },
         ]);
       } catch (error) {
-        // Same session check — don't show stale errors
         if (mySession !== sessionRef.current) return;
 
         const isRateLimited = error?.status === 429;
@@ -99,7 +91,6 @@ export function useBolt() {
           },
         ]);
       } finally {
-        // Only clear loading if we're still in the same session
         if (mySession === sessionRef.current) {
           setIsLoading(false);
         }
@@ -109,7 +100,6 @@ export function useBolt() {
   );
 
   const reset = useCallback(() => {
-    // Bump session — any in-flight request from the old session is now stale
     sessionRef.current += 1;
     setMessages([WELCOME_MESSAGE]);
     setIsLoading(false);

@@ -21,22 +21,28 @@ export default function ServicesGrid() {
 
         <div
           ref={ref}
-          className={cn(
-            'grid gap-4 transition-all duration-700 ease-out-expo sm:grid-cols-2 lg:grid-cols-3',
-            revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          )}
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((service, i) => (
-            <ServiceCard
+            <div
               key={service.id}
-              service={service}
-              // Give the first card a wider footprint on large screens
-              className={
+              className={cn(
+                'transition-all duration-700 ease-out-expo',
+                revealed
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-6',
                 i === 0 && service.featured
                   ? 'sm:col-span-2 lg:col-span-2'
                   : undefined
-              }
-            />
+              )}
+              style={{
+                transitionDelay: revealed
+                  ? `${Math.min(i * 60, 420)}ms`
+                  : '0ms',
+              }}
+            >
+              <ServiceCard service={service} className="h-full" />
+            </div>
           ))}
         </div>
       </Container>

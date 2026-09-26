@@ -35,17 +35,28 @@ export default function Testimonials() {
 
         <div
           ref={ref}
-          className={cn(
-            'transition-all duration-700 ease-out-expo',
-            revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          )}
         >
           {testimonials.length === 0 ? (
             <TestimonialPlaceholder />
           ) : (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {testimonials.map((t) => (
-                <TestimonialCard key={t.id} testimonial={t} />
+              {testimonials.map((t, i) => (
+                <div
+                  key={t.id}
+                  className={cn(
+                    'transition-all duration-700 ease-out-expo',
+                    revealed
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-6'
+                  )}
+                  style={{
+                    transitionDelay: revealed
+                      ? `${Math.min(i * 80, 400)}ms`
+                      : '0ms',
+                  }}
+                >
+                  <TestimonialCard testimonial={t} />
+                </div>
               ))}
             </div>
           )}

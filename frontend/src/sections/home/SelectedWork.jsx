@@ -32,15 +32,24 @@ export default function SelectedWork() {
           </Link>
         </div>
 
-        <div
-          ref={ref}
-          className={cn(
-            'grid gap-4 transition-all duration-700 ease-out-expo sm:grid-cols-2',
-            revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          )}
-        >
-          {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+        <div ref={ref} className="grid gap-4 sm:grid-cols-2">
+          {projects.map((project, i) => (
+            <div
+              key={project.slug}
+              className={cn(
+                'transition-all duration-700 ease-out-expo',
+                revealed
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-6'
+              )}
+              style={{
+                transitionDelay: revealed
+                  ? `${Math.min(i * 80, 400)}ms`
+                  : '0ms',
+              }}
+            >
+              <ProjectCard project={project} className="h-full" />
+            </div>
           ))}
         </div>
       </Container>
