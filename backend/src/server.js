@@ -45,7 +45,11 @@ app.use(
 
 app.use(
   cors({
-    origin: [env.CLIENT_URL, "http://localhost:5173"],
+    origin: [
+      env.CLIENT_URL,
+      "http://localhost:5173",
+      "http://localhost:4173", // preview server
+    ],
     credentials: true,
   }),
 );
