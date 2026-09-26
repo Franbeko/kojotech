@@ -4,6 +4,7 @@ import SEOHead from '../components/shared/SEOHead';
 import ServicesHero from '../sections/services/ServicesHero';
 import ServiceDetail from '../components/services/ServiceDetail';
 import ServiceNav from '../components/services/ServiceNav';
+import PricingSignal from '../sections/pricing/PricingSignal';
 import FinalCTA from '../sections/home/FinalCTA';
 import { useHashScroll } from '../hooks/useHashScroll';
 import { services } from '../data/services';
@@ -61,6 +62,8 @@ export default function Services() {
           </div>
         </Container>
       </section>
+
+      <PricingSignal />
 
       <FinalCTA />
     </>

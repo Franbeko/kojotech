@@ -4,6 +4,7 @@ import Hero from '../sections/home/Hero';
 import ServicesMarquee from '../sections/home/ServicesMarquee';
 import BrandIntro from '../sections/home/BrandIntro';
 import ServicesGrid from '../sections/home/ServicesGrid';
+import PricingSignal from '../sections/pricing/PricingSignal';
 import Industries from '../sections/home/Industries';
 import SelectedWork from '../sections/home/SelectedWork';
 import WhyKojoTech from '../sections/home/WhyKojoTech';
@@ -27,6 +28,7 @@ export default function Home() {
       <ServicesMarquee />
       <BrandIntro />
       <ServicesGrid />
+      <PricingSignal />
       <Industries />
       <SelectedWork />
       <WhyKojoTech />
