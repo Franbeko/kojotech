@@ -1,16 +1,17 @@
 import { X, RotateCcw } from 'lucide-react';
+import BrandMark from '../ui/BrandMark';
 
 /**
  * BoltHeader — panel header with close + reset controls.
+ * Uses the KojoTech brand mark as the avatar.
  */
 export default function BoltHeader({ onClose, onReset, hasMessages }) {
   return (
     <header className="flex items-center justify-between border-b border-ink-line px-4 py-3">
       <div className="flex items-center gap-2.5">
         <div className="relative">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-lime/15 font-display text-xs font-semibold text-lime">
-            B
-          </div>
+          <BrandMark size="md" />
+          {/* Online dot */}
           <span
             aria-hidden="true"
             className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-ink bg-lime"
