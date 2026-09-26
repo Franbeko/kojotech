@@ -18,4 +18,9 @@ export const env = {
   SITE_URL: import.meta.env.VITE_SITE_URL || 'http://localhost:5173',
   IS_DEV: import.meta.env.DEV,
   IS_PROD: import.meta.env.PROD,
+
+  // Analytics — disabled by default, enabled in production
+  ANALYTICS_ENABLED: import.meta.env.VITE_ANALYTICS_ENABLED === 'true',
+  ANALYTICS_URL: import.meta.env.VITE_ANALYTICS_URL || '',
+  ANALYTICS_WEBSITE_ID: import.meta.env.VITE_ANALYTICS_WEBSITE_ID || '',
 };

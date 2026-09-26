@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
+import Analytics from './components/analytics/Analytics';
 
 // Home loads eagerly — it's the primary landing page and most visitors see it first.
 import Home from './pages/Home';
@@ -35,21 +36,26 @@ function RouteLoading() {
 
 export default function App() {
   return (
-    <Suspense fallback={<RouteLoading />}>
-      <Routes>
-        <Route element={<RootLayout />}>
-          <Route index element={<Home />} />
-          <Route path="services" element={<Services />} />
-          <Route path="work" element={<Work />} />
-          <Route path="work/:slug" element={<CaseStudy />} />
-          <Route path="about" element={<About />} />
-          <Route path="faq" element={<FAQ />} />
-          <Route path="testimonials" element={<Testimonials />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="privacy" element={<Privacy />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </Suspense>
+    <>
+      {/* Analytics — no-op when VITE_ANALYTICS_ENABLED=false */}
+      <Analytics />
+
+      <Suspense fallback={<RouteLoading />}>
+        <Routes>
+          <Route element={<RootLayout />}>
+            <Route index element={<Home />} />
+            <Route path="services" element={<Services />} />
+            <Route path="work" element={<Work />} />
+            <Route path="work/:slug" element={<CaseStudy />} />
+            <Route path="about" element={<About />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route path="testimonials" element={<Testimonials />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="privacy" element={<Privacy />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </>
   );
 }
