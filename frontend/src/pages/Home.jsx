@@ -1,6 +1,7 @@
 import { organizationSchema, websiteSchema } from '../config/site';
 import SEOHead from '../components/shared/SEOHead';
 import Hero from '../sections/home/Hero';
+import TrustedBy from '../sections/home/TrustedBy';
 import ServicesMarquee from '../sections/home/ServicesMarquee';
 import BrandIntro from '../sections/home/BrandIntro';
 import ServicesGrid from '../sections/home/ServicesGrid';
@@ -25,6 +26,7 @@ export default function Home() {
       />
 
       <Hero />
+      <TrustedBy />
       <ServicesMarquee />
       <BrandIntro />
       <ServicesGrid />
